@@ -14,7 +14,7 @@ installer, or copy it into a supported project skill directory:
 
 ```bash
 mkdir -p .github/skills
-cp -R /path/to/skills/skills/interview .github/skills/interview
+cp -R <repo-root>/skills/interview .github/skills/interview
 ```
 
 Restart or reload Copilot, then invoke `/interview` explicitly. Clients that
@@ -25,14 +25,14 @@ the `interview` skill instead.
 
 ```bash
 mkdir -p .claude/skills
-cp -R /path/to/skills/skills/interview .claude/skills/interview
+cp -R <repo-root>/skills/interview .claude/skills/interview
 ```
 
 ### Install for Codex and compatible clients
 
 ```bash
 mkdir -p .agents/skills
-cp -R /path/to/skills/skills/interview .agents/skills/interview
+cp -R <repo-root>/skills/interview .agents/skills/interview
 ```
 
 Use the skill directory expected by your client if it differs. The portable core
