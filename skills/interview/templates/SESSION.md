@@ -11,7 +11,7 @@
 - Target role and level:
 - Duration or scope:
 - Difficulty:
-- Coding language: N/A
+- Coding language:
 - Interviewer style:
 - Hint policy:
 - Feedback timing:
