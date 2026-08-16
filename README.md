@@ -2,50 +2,91 @@
 
 Reusable agent skills for developers.
 
-## Interview
+## Interview skill
 
-`/interview` is a stateful software-engineering interview gym for behavioral, system-design, and coding interviews. It adapts to the candidate's experience, resume, target role, and preferred language; conducts realistic mock interviews; provides evidence-based coaching; and records progress between sessions.
+`/interview` is a stateful software-engineering interview skill for behavioral, system-design, and coding interviews. It adapts to the candidate's experience, resume, target role, and preferred language; conducts realistic mock interviews; provides evidence-based coaching; and records progress between sessions.
 
 ### Install for GitHub Copilot
 
-GitHub Copilot is the primary supported host. With GitHub CLI 2.90.0 or later:
+GitHub Copilot is the primary acceptance target. Install the canonical
+[`skills/interview`](skills/interview/SKILL.md) directory using your client's skill
+installer, or copy it into a supported project skill directory:
 
 ```bash
-gh skill preview chasehelton/skills interview
-gh skill install chasehelton/skills interview --agent copilot --scope project
+mkdir -p .github/skills
+cp -R /path/to/repo-root/skills/interview .github/skills
 ```
 
-You can also copy `skills/interview` into `.github/skills/interview`, `.agents/skills/interview`, or `.claude/skills/interview` in a project.
+Restart or reload Copilot, then invoke `/interview` explicitly. Clients that
+support repository-based installation may install `chasehelton/skills` and select
+the `interview` skill instead.
 
 ### Install for Claude Code
 
 ```bash
-gh skill install chasehelton/skills interview --agent claude-code --scope project
+mkdir -p .claude/skills
+cp -R /path/to/repo-root/skills/interview .claude/skills
 ```
 
-Then invoke it explicitly:
+### Install for Codex and compatible clients
+
+```bash
+mkdir -p .agents/skills
+cp -R /path/to/repo-root/skills/interview .agents/skills
+```
+
+Use the skill directory expected by your client if it differs. The portable core
+uses standard `name` and `description` frontmatter; `agents/openai.yaml` disables
+implicit invocation for compatible OpenAI clients.
+
+### Use
 
 ```text
 /interview
 /interview mock behavioral
+/interview mock system-design
+/interview mock coding
+/interview mock mixed
+/interview practice behavioral impact
 /interview practice coding graphs
+/interview review resume
 /interview review progress
 ```
 
-### Install for Codex and compatible Agent Skills clients
+With no arguments, the interviewer asks only the focused questions needed to
+establish the **interview contract**. Mock feedback is held until the end unless
+you opt into live feedback.
 
-Install with the host's Agent Skills installer, use GitHub CLI if the host is offered by `gh skill install`, or copy `skills/interview` into the host's supported skills directory.
+The first run creates state in the directory where you invoke the skill. Put a
+`RESUME.md` there for resume-grounded sessions. You may configure another
+workspace; see [WORKSPACE.md](skills/interview/WORKSPACE.md).
 
-### Validate
+### State and privacy
 
-```bash
-gh skill publish --dry-run
-```
+Generated state is ordinary project content by default:
+
+- `RESUME.md` can contain sensitive personal information.
+- `.interview/` contains answers, evaluations, and preparation notes.
+- Review both before sharing or committing them.
+- Gitignore either path if you want local-only state. The skill never edits
+  `.gitignore` unless asked.
 
 ## Philosophy
 
-These skills are operating procedures, not prompt dumps. They use concise entry points, progressive disclosure, explicit completion criteria, and durable workspace state.
+Attempt before instruction. Mock interviews measure independent performance;
+practice sessions teach; review sessions synthesize. Feedback cites observable
+behavior, avoids fake precision, and ends with a concrete drill. Starter prompts
+are original—not a scraped proprietary question bank. See
+[example prompts](skills/interview/examples/original-prompts.md).
+
+### Validate
+
+No dependencies are required:
+
+```bash
+python3 scripts/validate-skill.py
+```
 
 ## License
 
-MIT
+[MIT](LICENSE)
