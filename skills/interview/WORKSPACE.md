@@ -3,12 +3,10 @@
 The workspace is where candidate-owned state lives. Resolve it in this order:
 
 1. A path explicitly supplied in the current invocation.
-2. The `workspace` value in `.interview/config.yaml` found from the current
-   directory.
+2. The `workspace` value in `.interview/config.yaml` found from the current directory.
 3. The current working directory.
 
-Resolve relative configured paths from the directory containing
-`.interview/config.yaml`. Confirm before writing outside the current directory.
+Resolve relative configured paths from the directory containing `.interview/config.yaml`. Confirm before writing outside the current directory.
 A minimal alternate configuration is:
 
 ```yaml

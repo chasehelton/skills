@@ -2,9 +2,9 @@
 
 Reusable agent skills for developers.
 
-## Interview gym
+## Interview skill
 
-`/interview` is a stateful software-engineering interview gym for behavioral, system-design, and coding interviews. It adapts to the candidate's experience, resume, target role, and preferred language; conducts realistic mock interviews; provides evidence-based coaching; and records progress between sessions.
+`/interview` is a stateful software-engineering interview skill for behavioral, system-design, and coding interviews. It adapts to the candidate's experience, resume, target role, and preferred language; conducts realistic mock interviews; provides evidence-based coaching; and records progress between sessions.
 
 ### Install for GitHub Copilot
 
